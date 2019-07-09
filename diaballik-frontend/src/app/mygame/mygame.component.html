@@ -1,0 +1,52 @@
+<main>
+
+  <input type="button" class="joueurs" value={{this.data.storage.j1.name}}/>
+  <input type="button" class="joueurs" value={{this.data.storage.j2.name}}/>
+
+  <p class="espace"></p>
+    
+  <div class="mygame">
+
+    <div class="boardligne" *ngFor="let x of [0,1,2,3,4,5,6]" >
+      <div class="boardcolonne" 
+        *ngFor="let y of [0,1,2,3,4,5,6]" 
+        [attr.data-x]=x 
+        [attr.data-y]=y
+        (click)="onCaseClicked($event)">
+      </div>
+    </div>
+
+    <div class="piece" 
+      *ngFor="let piece of getPieces()"
+        [ngStyle] = "{'background-color': (piece.player == 2) ? 'papayawhip' : 'sandybrown'}"
+        [style.left.px] = "piece.tx * 80 + 12"
+        [style.top.px] = "piece.ty * 80 + 12"
+        [attr.data-x] = "piece.tx"
+        [attr.data-y] = "piece.ty" 
+        [attr.data-hasBall]="piece.hasBall"
+        (click)="onPieceClicked($event)">
+
+        <div *ngIf="piece.hasBall==true" class="ball">
+        </div>
+    </div>
+
+    <div *ngIf= "getWin()" class="pn" id="myPN"></div>
+
+    <div *ngIf="isReplay()">
+      <button class="undo" type="button" (click)="undoMyAction($event)" style="width: 70px; height: 30px">Undo</button>
+      <button class="redo" type="button" (click)="redoMyAction($event)" style="width: 70px; height: 30px">Redo</button>
+      <div *ngIf="getWin()" class="pn"></div>
+    </div>
+    
+  </div>
+  
+  <p class="espaceFin"></p>
+
+  <button class="save" type="button" (click)="saveClicked($event)" style="width: 70px; height: 30px">Save</button>
+  <div *ngIf="isSave()" class="save">
+    How would you like to name your file ?
+    <input type="text" name="filename" id="filename"/>
+    <button class="confirmSave" type="button" (click)="saveMyGame($event)" style="width: 70px; height: 25px">Confirm</button>
+  </div>
+  
+</main>

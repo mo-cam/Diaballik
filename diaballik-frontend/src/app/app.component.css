@@ -1,0 +1,13 @@
+.logo{
+    background-image: url("../assets/myDiaballik.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 500px;
+    height: 200px;
+}
+.flocons{
+    background-image: url("../assets/Big_red_snowflake.jpg");
+    background-position: top;
+    background-size: 1000px;
+    height: 3000px;
+}

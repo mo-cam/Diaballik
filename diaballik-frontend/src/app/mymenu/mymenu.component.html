@@ -1,0 +1,69 @@
+<div *ngIf="isHome()">
+<p>
+  <input (click)="myNewGameClicked($event)" class="button" type="button" value="New game" style="width: 170px; height: 50px "/>
+</p>
+<p>
+  <input (click)="myLoadClicked($event)" class="button" type="button"  value="Load" style="width: 170px; height: 50px"/>
+</p>
+<p>
+  <input (click)="myReplayClicked($event)" class="button" type="button" value="Replay" style="width: 170px; height: 50px"/>
+</p>
+</div>
+
+<div *ngIf="isNewGame()" class="initGamePage1">
+  <p>
+  Which scenario would you like ?<br>
+  <input type="radio" name="scenario" id="scenario0" value=0/>Scenario 0 : standard<br>
+  <input type="radio" name="scenario" id="scenario1" value=1/>Scenario 1 : ball-random<br>
+  <input type="radio" name="scenario" id="scenario2" value=2/>Scenario 2 : enemy-among-us
+  </p>
+  <p>
+  What's the name of the first player ?
+  <input type="text" name="nameP1" id="nameP1"/>
+  </p>
+  <p>
+    How many human players will play ?<br>
+    <input type="radio" name="nbPlayers" id="nbPlayers1" value=1/>1
+    <input type="radio" name="nbPlayers" id="nbPlayers2" value=2/>2
+  </p>
+  <input class="button" type="button" (click)="myNextHomeClicked($event)" value="Next" style="width: 70px; height: 25px"/>
+</div>
+
+<div *ngIf="isNext()" class="initGamePage2">
+  <p *ngIf="isGamePvP()">
+    What's the name of the second player ?<br>
+    <input type="text" name="nameP2" id="nameP2"/>
+  </p>
+  <p *ngIf="isGamePvIA()">
+    Which level would you like for the AI ?<br>
+    <input type="radio" name="level" id="level0" value=0/>Level 0 : noob<br>
+    <input type="radio" name="level" id="level1" value=1/>Level 1 : starting<br>
+    <input type="radio" name="level" id="level2" value=2/>Level 2 : progressive
+  </p>
+  <button class="button" type="submit" (click)="myNewGame($event)" style="width: 70px; height: 25px ">Submit</button>
+</div>
+
+<div *ngIf="isLoad()">
+  <p>
+    <!--Type button juste pour centrer le text dans la case-->
+    <input type="button" class="button" value="Which file would you like to load ?" style="width: 220px; height: 35px"/>
+    <!--Id dans la balise select : valeur = valeur de l'option selectionnee-->
+    <select id="game">
+      <!--Id pas dans la balise option : sinon valeur = valeur de la premiere option meme si elle n'est pas selectionnee-->
+       <option *ngFor="let game of getSavedGames()" value={{game}}>{{game}}</option>
+    </select>
+  </p>
+  <input class="button" type="button" value="Load" style="width: 70px; height: 25px" (click)="myValidLoad($event)" /> 
+</div>
+
+<div *ngIf="isReplay()">
+  <p>
+    <!--Type button juste pour centrer le text dans la case-->
+    <input type="button" class="button" value="Which file would you like to replay ?" style="width: 230px; height: 35px">
+    <select id="game">
+        <option *ngFor="let game of getSavedGames()" value={{game}}>{{game}}</option>
+     </select>
+  </p>
+  <input class="button" type="button" value="Replay" style="width: 100px; height: 25px " (click)="myValidReplay($event)"/>
+</div>
+

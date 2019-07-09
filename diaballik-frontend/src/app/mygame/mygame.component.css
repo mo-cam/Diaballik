@@ -1,0 +1,135 @@
+div {
+    --size-cell: 80px;
+    --border-cell: 2px;
+    --nb-cell: 7;
+}
+
+.mygame{
+    box-sizing: border-box;
+    position: relative;
+    margin: auto;
+    width: calc(var(--size-cell)*var(--nb-cell) + 45px);
+    height: calc(var(--size-cell)*var(--nb-cell) + 45px);
+    z-index: 1;
+}
+
+.boardligne {
+    box-sizing: border-box;
+    /* Bordures visibles */
+    border: var(--border-cell) solid;
+    background-color:#5f2f0d;
+    border-color: #984c15;
+    width: var(--size-cell);
+    height: var(--size-cell);
+    float: left;
+    padding: 0;
+    margin: 0;
+}
+
+.boardcolonne {
+    box-sizing: border-box;
+    /* Bordures visibles */
+    border: var(--border-cell) solid;
+    background-color : #5f2f0d;
+    border-color: #984c15;
+    width: var(--size-cell);
+    height: var(--size-cell);
+    float: left;
+}
+
+.ball {
+    border-radius: 50%;
+    width: 65%;
+    height: 65%;
+    border-color: black;
+    background-color: darkslategray;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    top: 15%;
+}
+
+.piece {
+    box-sizing: border-box;
+    position: absolute;
+    border-radius: 50%;
+    width: calc(var(--size-cell) - 20px);
+    height: calc(var(--size-cell) - 20px);
+    border-color: black;
+    z-index: 2;
+    margin: 0;
+    padding: 0;
+}
+
+.save{
+    position: absolute;
+    color: green;
+    z-index: 2;
+    margin-left: 15%;
+    padding: 0;
+    border-radius: 6px;
+    border: 3px solid maroon;
+    background-color: white;
+}
+
+.confirmSave{
+    border: 1px solid maroon;
+    background-color: white;
+    color: green;
+}
+
+.undo {
+    margin-top: 500px;
+    display: inline-table;
+    margin-left: 50px;
+    margin-right: auto;
+    background-color: white;
+    color: green;
+    border-radius: 6px;
+    border: 3px solid maroon;
+}
+  
+.redo {
+    margin-top: 500px;
+    display: inline-table;
+    margin-left: auto;
+    margin-right: 50px;
+    background-color: white;
+    color: green;
+    border-radius: 6px;
+    border: 3px solid maroon;
+}
+
+.pn{
+    background-image: url("/assets/perenoel.gif");
+    background-repeat : no-repeat;
+    background-position: top;
+    background-size: 400px;
+    height: 600px;
+    position:relative;
+    z-index:10;
+}
+
+.joueurs{
+    width:10%;
+    height: 5%;
+    box-sizing: border-box;
+    position: relative;
+    color: goldenrod;
+    z-index: 2;
+    margin-left: 0;
+    padding: 0;
+    border-radius: 15px;
+    border: 2px solid maroon;
+    background-color: rgb(189, 15, 15);
+}
+
+.espace{
+    height: 10%;
+    z-index: 0;
+}
+
+.espaceFin{
+    height: 5%;
+    z-index: 0;
+}
